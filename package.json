@@ -1,5 +1,5 @@
 {
-  "name": "promise-sequence",
+  "name": "promise-sequel",
   "version": "0.1.0",
   "description": "run promises in a sequence",
   "main": "index.js",
