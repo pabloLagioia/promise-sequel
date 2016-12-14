@@ -6,6 +6,8 @@ Examples:
 ## Run all promises in the array one after the other
 
 ```
+var PromiseSequel = require("promise-sequel");
+
 PromiseSequel.all([
   function() {
     return new Promise(accept, reject) {
@@ -24,6 +26,8 @@ PromiseSequel.all([
 ## Run promises until the condition is false
 
 ```
+var PromiseSequel = require("promise-sequel");
+
 PromiseSequel.all([
   function() {
     return new Promise(accept, reject) {
