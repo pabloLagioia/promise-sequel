@@ -5,20 +5,22 @@ module.exports = {
   all: function(promiseArray) {
 
     var current = 0;
+    var results = [];
 
     return new Promise(function(accept, reject) {
 
       function next() {
 
         if (current < promiseArray.length) {
-          promiseArray[current]().then(function() {
+          promiseArray[current]().then(function(result) {
+            results.push(result);
             current++;
             next();
           }).catch(function(e) {
             reject(e);
           });
         } else {
-          accept();
+          accept(results);
         }
 
       }
@@ -34,6 +36,7 @@ module.exports = {
   some: function(promiseArray, condition) {
 
     var current = 0;
+    var results = [];
 
     return new Promise(function(accept, reject) {
 
@@ -43,11 +46,13 @@ module.exports = {
 
           promiseArray[current]().then(function(result) {
 
+            results.push(result);
+            
             if (condition(result)) {
               current++;
               next();
             } else {
-              accept(result);
+              accept(results);
             }
 
           }).catch(function(e) {
@@ -55,7 +60,7 @@ module.exports = {
           });
 
         } else {
-          accept();
+          accept(results);
         }
 
       }

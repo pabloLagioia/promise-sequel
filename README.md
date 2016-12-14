@@ -11,16 +11,18 @@ var PromiseSequel = require("promise-sequel");
 PromiseSequel.all([
   function() {
     return new Promise(accept, reject) {
-      console.log("First promise!");
+      return "First promise!";
     }
   },
   function() {
     return new Promise(accept, reject) {
-      console.log("Last promise!");
+      return "Last promise!";
     }
   }
-]).then(function() {
+]).then(function(results) {
   console.log("done!");
+  // results[0] => "First promise!"
+  // results[1] => "Last promise!"
 });
 ```
 ## Run promises until the condition is false
@@ -48,7 +50,9 @@ PromiseSequel.all([
   }
 ], function(continue) {
   return continue === "yes";
-}).then(function() {
+}).then(function(results) {
   console.log("done!");
+  // results[0] => "yes"
+  // results[1] => "no"
 });
 ```
