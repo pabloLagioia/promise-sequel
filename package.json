@@ -1,6 +1,6 @@
 {
   "name": "promise-sequel",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "run promises in a sequence",
   "main": "index.js",
   "scripts": {
